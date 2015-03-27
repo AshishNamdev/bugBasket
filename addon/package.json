@@ -1,9 +1,9 @@
 {
-  "name": "addon",
-  "title": "addon",
+  "name": "ShoB",
+  "title": "addon for accessing bugs",
   "id": "jid1-12Lpk2AY0JZ3kg",
-  "description": "a basic add-on",
-  "author": "",
+  "description": "Internal Firefox addon for  accessing bug details from bug tracking system ",
+  "author": "Ashish Namdev",
   "license": "MPL 2.0",
   "version": "0.1"
 }
