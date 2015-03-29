@@ -20,6 +20,7 @@ public class DbCom
     public static final String dbuser = "root";
     public static final String dbpwd = "amd@123";
     public static final String database = "bugbasket";
+    //public static final String dburl = "jdbc:mysql://192.168.0.103/";
     public static final String dburl = "jdbc:mysql://localhost/";
     private static final String dbDriver = "com.mysql.jdbc.Driver";
     
