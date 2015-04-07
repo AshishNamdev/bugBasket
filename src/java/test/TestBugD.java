@@ -4,23 +4,24 @@
  * and open the template in the editor.
  */
 package test;
+import bugbasket.ExtBugD;
 import comm.DbCom;
 import java.util.ArrayList;
 import model.BugD;
-import model.Query;
+import bugbasket.Query;
 
 /**
  *
  * @author anamdev
  */
-public class BugDTest
+public class TestBugD
 {
     public static void main(String[] args)
     {
         String actionBy = "anamdev";
         Query query = new Query();
         query.setActionBy(actionBy);
-        query.getBugData();
+        query.fetchBugData();
         ArrayList<BugD> bugdList = query.getBugdList();
         //System.out.println("bugid \t\t\t title \t\t\t\t\t\t\t\t\t\t bugdate lastmodified \t creator \t\t Priority \t status \t actioby");
         for(BugD bugd : bugdList)

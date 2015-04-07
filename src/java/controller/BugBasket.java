@@ -5,17 +5,17 @@
  */
 package controller;
 
+import bugbasket.ExtBugD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.BugD;
-import model.Query;
 
 /**
  *
@@ -40,60 +40,93 @@ public class BugBasket extends HttpServlet {
         if (user.equals(""))
         {
             RequestDispatcher rd = request.getRequestDispatcher("index.html");
-            out.println("<span id='response' color='red'>Please select any user from list</span>");
+            out.println("<span id='response' style='color:red'>Please select any user from list</span>");
             //out.println(out);
             rd.include(request, response);
             return;
         }
-        //user = "anamdev";
-        Query query = new Query();
-        query.setActionBy(user);
-        query.getBugData();
-        ArrayList<BugD> bugdList = query.getBugdList();
-        //try {
+        String bUser  = "\""+user+"\"";
+        ExtBugD extractBug = new ExtBugD();
+        ArrayList<BugD> bugdList = extractBug.extractBugDetails(user);
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("bugdList", bugdList);
+        
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>BugBasket</title>");            
+            out.println("<title> BugInfo</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Details for actionby "+user+"</h1>");
-            out.println("<table border = 1 cellpadding = 1 cesslspacing = 1>");
-            //out.println("<tablex    >");
-            //out.println("<th>");
-            out.println("<tr>");
-            out.println("<td>BugID</td>");
-            out.println("<td>Title</td>");
-            out.println("<td>BugDate</td>");
-            out.println("<td>lastmodified</td>");
-            out.println("<td>creator</td>");
-            out.println("<td>priority</td>");
-            out.println("<td>status</td>");
-            out.println("<td>actionby</td>");
-            out.println("</tr>");
-            //out.println("</th>");
-            for(BugD bugd : bugdList)
+            out.println("<center>");
+            if (extractBug.getTotalBug()<=0)
             {
-                out.println("<tr>");
-                //out.println("<h4>\n"+bugd.getBugID() +" \t "+ bugd.getTitle()+" \t "+bugd.getBugDate()+" \t"+bugd.getLastModified()+" \t "+bugd.getCreator()+" \t "+bugd.getPriority()+" \t"+bugd.getStatus()+" \t "+bugd.getActionBy()+"</h3>");
-                out.println("<td>"+bugd.getBugID()+"</td>");
-                out.println("<td>"+bugd.getTitle()+"</td>");
-                out.println("<td>"+bugd.getBugDate()+"</td>");
-                String lastmodified = bugd.getLastModified()==null ? "NA":bugd.getLastModified().toString();
-                out.println("<td>"+lastmodified+"</td>");
-                out.println("<td>"+bugd.getCreator()+"</td>");
-                out.println("<td>"+bugd.getPriority()+"</td>");
-                out.println("<td>"+bugd.getStatus()+"</td>");
-                out.println("<td>"+bugd.getActionBy()+"</td>");
-                out.println("</tr>");
+                out.println("<h4> Hi "+bUser+" there are No pending bugs waiting for you </h4>");
+                out.println("<br/>");
+                out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
             }
-            out.println("</table>");
-            out.println("<br/>");
-            out.println("<a href='index.html'>select another user</a>");
+            else
+            {
+                out.print("<h4> Hi "+bUser+" there are ");
+                out.print("<a href='http://10.136.131.140/bugBasket/BugDBasket?user="+user+"' title='click here to get details'>"+extractBug.getTotalBug()+"</a> bugs waiting for you</h4>");
+                out.println("<table border = 0.5 cellpadding = 5 cesslspacing = 5>");
+                out.println("<tr>");
+                out.println("<td>status</td>");
+                out.println("<td>count</td>");
+                out.println("</tr>");
+                if (extractBug.getOpenBug()>0)
+                {  
+                    
+                    out.println("<tr>");
+                    out.println("<td><a href='BugInfo?status=open'> Open</a></td>");
+                    out.println("<td><a href='#'>"+extractBug.getOpenBug()+"</a></td>");
+                    out.println("</tr>");
+                }
+                if (extractBug.getClosedBug()>0)
+                {  
+                    out.println("<tr>");
+                    out.println("<td><a href='BugInfo?status=closed'> Closed</a></td>");
+                    out.println("<td>"+extractBug.getClosedBug()+"</td>");
+                    out.println("</tr>");
+                }
+                if (extractBug.getImplementedBug()>0)
+                {  
+                    out.println("<tr>");
+                    out.println("<td>Implemented</td>");
+                    out.println("<td>"+extractBug.getImplementedBug()+"</td>");
+                    out.println("</tr>");
+                }
+                if (extractBug.getTriagedBug()>0)
+                {  
+                    out.println("<tr>");
+                    out.println("<td> Triaged </td>");
+                    out.println("<td>  "+extractBug.getTriagedBug()+"  </td>");
+                    out.println("</tr>");
+                }
+
+                if (extractBug.getAnalyzedBug()>0)
+                {  
+                    out.println("<tr>");
+                    out.println("<td> Analyzed </td>");
+                    out.println("<td>  "+extractBug.getAnalyzedBug()+"  </td>");
+                    out.println("</tr>");
+                }
+
+                if (extractBug.getNeedMoreInfoQA()>0)
+                {  
+                    out.println("<tr>");
+                    out.println("<td> Need More Info - QA </td>");
+                    out.println("<td>  "+extractBug.getNeedMoreInfoQA()+"  </td>");
+                    out.println("</tr>");
+                }
+                out.println("</table>");
+                out.println("<br/>");
+                out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
+                out.println("</center>");
+            }
             out.println("</body>");
             out.println("</html>");
-        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

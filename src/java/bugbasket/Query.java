@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package bugbasket;
 import comm.DbCom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.BugD;
 /**
  *
  * @author anamdev
@@ -33,7 +34,7 @@ public class Query
         this.actionBy = actionBy;
     }
       
-    public void getBugData()
+    public void fetchBugData()
     {
         String query = "SELECT * FROM `bugbasket`.`bugd` where actionby = "+this.getActionBy();
         System.out.println(query);
@@ -53,7 +54,7 @@ public class Query
                 bugd.setLastModified(resultset.getDate("lastmodified"));
                 bugd.setCreator(resultset.getString("creator"));
                 bugd.setPriority(resultset.getString("priority"));
-                bugd.setStatus(resultset.getString("status"));
+                bugd.setStatus(resultset.getString("status").toLowerCase());
                 bugd.setActionBy(resultset.getString("actionby"));
                 
                 this.bugdList.add(bugd);
