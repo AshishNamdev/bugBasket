@@ -4,7 +4,7 @@ var data = require("sdk/self").data;
 // into it.
 var popup = require("sdk/panel").Panel({
   contentURL: data.url("bugBasket.htm"),
-  contentScriptFile: data.url("ui.js")
+  //contentScriptFile: data.url("ui.js")
 });
 
 // Create a button
@@ -32,6 +32,7 @@ function handleClick(state) {
 popup.on("show", function() {
   popup.port.emit("show");
 });
+
 
 // Listen for messages called "text-entered" coming from
 // the content script. The message payload is the text the user
