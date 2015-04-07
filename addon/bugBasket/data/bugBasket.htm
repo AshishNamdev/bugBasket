@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>bugBasket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <script type="text/javascript">
+
+        function queryUser()
+        {
+            //alert("yes");
+            var option = document.getElementById("selection");
+            var user = option.options[option.selectedIndex].value;
+            queryBug(user);
+        }
+        function queryBug(user)
+        {
+            //alert(user)
+            //var ele=document.getElementById("stdSearch").value;
+            var xmlhttp;
+            var strAjUrlData="BugBasket?user="+user;
+            //alert(strAjUrlData)
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                 xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+             }
+             xmlhttp.onreadystatechange=function()
+             {
+             if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+
+            }
+              else
+              {
+              alet(xmlhttp.status);
+              }
+             }
+              xmlhttp.open("GET",strAjUrlData,true);
+                  xmlhttp.send();
+          }
+    </script>
+    <body>
+        <div>
+            <h4>Enter name of person needed action to filter bug details</h4>
+            <span id="response"></span>
+            <!--<form action="BugBasket" method="post">-->
+                <select name="user" id="selection">
+                    <option value="" selected="selected">select user</option>
+                    <option value="anamdev">anamdev</option>
+                    <option value="Darshan UB">Darshan UB</option>
+                    <option value="Arul D">Arul D</option>
+                    <option value="Neha">Neha</option>
+                    <option value="Ritesh">Ritesh</option>
+                </select>
+                <br/><br/>
+                <!--<input type="submit" id="sbutton" value="click here" onClick=return queryUser() />-->
+                <button id="sbutton" value="click here" onClick="return queryUser()">click here</button>
+            <!--</form>-->
+        </div>
+    </body>
+</html>

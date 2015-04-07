@@ -37,7 +37,7 @@ public class BugBasket extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("user");
         PrintWriter out = response.getWriter();
-        if (user.equals("select user"))
+        if (user.equals(""))
         {
             RequestDispatcher rd = request.getRequestDispatcher("index.html");
             out.println("<span id='response' color='red'>Please select any user from list</span>");
