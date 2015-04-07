@@ -4,9 +4,25 @@
         <servlet-name>BugBasket</servlet-name>
         <servlet-class>controller.BugBasket</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BugDBasket</servlet-name>
+        <servlet-class>controller.BugDBasket</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BugInfo</servlet-name>
+        <servlet-class>controller.BugInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BugBasket</servlet-name>
         <url-pattern>/BugBasket</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BugDBasket</servlet-name>
+        <url-pattern>/BugDBasket</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BugInfo</servlet-name>
+        <url-pattern>/BugInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
