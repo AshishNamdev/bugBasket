@@ -3,13 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/controller/BugDBasket.java</file>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/test/TestExtBugD.java</file>
             <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/model/BugD.java</file>
-            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/model/Query.java</file>
-            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/test/BugDTest.java</file>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/bugbasket/ExtBugD.java</file>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/bugbasket/BugView.java</file>
             <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/comm/DbCom.java</file>
             <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/controller/BugBasket.java</file>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/bugbasket/Query.java</file>
             <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/web/index.html</file>
             <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/anamdev/Desktop/Ashish/amd_hackathon/bugBasket/src/java/controller/BugInfo.java</file>
         </group>
     </open-files>
 </project-private>

@@ -40,10 +40,10 @@ public class DbCom
     {
         Connection connection = null;
         connection = DriverManager.getConnection(dburl+database+"?user="+dbuser+"&password="+dbpwd);
-        System.out.println(dburl+database+"? user="+dbuser+"&password="+dbpwd);
+        System.out.println(dburl+database+"?user="+dbuser+"&password="+dbpwd);
         if(connection==null)
         {
-        throw new NullPointerException();
+            throw new NullPointerException();
         }
         return connection;
     }
