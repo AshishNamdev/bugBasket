@@ -13,12 +13,12 @@ var button = ToggleButton({
   onChange: handleChange
 });
 
-var panel = panels.Panel({
+function handleChange(state) {
+  var panel = panels.Panel({
   contentURL: self.data.url("bugBasket.htm"),
   onHide: handleHide
-});
+  });
 
-function handleChange(state) {
   if (state.checked) {
     panel.show({
       position: button
@@ -28,4 +28,5 @@ function handleChange(state) {
 
 function handleHide() {
   button.state('window', {checked: false});
+  panel.destroy();
 }

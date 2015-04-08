@@ -34,7 +34,6 @@ public class BugView
         {
             if(bugd.getStatus().equalsIgnoreCase(this.bugStatus))
             {
-                System.out.println(bugd);
                 bugFilter.add(bugd);
             }
         }
