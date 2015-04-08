@@ -79,7 +79,6 @@ public class BugInfo extends HttpServlet {
             }
             out.println("</table>");
             out.println("<br/>");
-            out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
             out.println("</center>");
             out.println("</body>");
             out.println("</html>");
