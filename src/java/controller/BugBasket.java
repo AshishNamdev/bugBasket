@@ -51,6 +51,8 @@ public class BugBasket extends HttpServlet {
         
         HttpSession session = request.getSession();
         session.setAttribute("bugdList", bugdList);
+        String bugInfoUrl = "<a href='http://10.136.131.140/bugBasket/BugInfo?status=";
+        String args = "title='click to get details' target='_blank'>";
         
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -62,14 +64,14 @@ public class BugBasket extends HttpServlet {
             out.println("<center>");
             if (extractBug.getTotalBug()<=0)
             {
-                out.println("<h4> Hi "+bUser+" there are No pending bugs waiting for you </h4>");
+                out.println("<h4> Hi "+bUser+" there are No pending bugs in your basket </h4>");
                 out.println("<br/>");
                 out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
             }
             else
             {
                 out.print("<h4> Hi "+bUser+" there are ");
-                out.print("<a href='http://10.136.131.140/bugBasket/BugDBasket?user="+user+"' title='click here to get details'>"+extractBug.getTotalBug()+"</a> bugs waiting for you</h4>");
+                out.print("<a href='http://10.136.131.140/bugBasket/BugDBasket?user="+user+"' title='click to get details' target='_blank'>"+extractBug.getTotalBug()+"</a> bugs in your basket</h4>");
                 out.println("<table border = 0.5 cellpadding = 5 cesslspacing = 5>");
                 out.println("<tr>");
                 out.println("<td>status</td>");
@@ -79,45 +81,45 @@ public class BugBasket extends HttpServlet {
                 {  
                     
                     out.println("<tr>");
-                    out.println("<td><a href='BugInfo?status=open'> Open</a></td>");
-                    out.println("<td><a href='#'>"+extractBug.getOpenBug()+"</a></td>");
+                    out.println("<td>"+bugInfoUrl+"open'"+args+"Open</a></td>");
+                    out.println("<td>"+bugInfoUrl+"open'"+args+extractBug.getOpenBug()+"</a></td>");
                     out.println("</tr>");
                 }
                 if (extractBug.getClosedBug()>0)
                 {  
                     out.println("<tr>");
-                    out.println("<td><a href='BugInfo?status=closed'> Closed</a></td>");
-                    out.println("<td>"+extractBug.getClosedBug()+"</td>");
+                    out.println("<td>"+bugInfoUrl+"closed'"+args+"Closed</a></td>");
+                    out.println("<td>"+bugInfoUrl+"closed'"+args+extractBug.getClosedBug()+"</a></td>");
                     out.println("</tr>");
                 }
                 if (extractBug.getImplementedBug()>0)
                 {  
                     out.println("<tr>");
-                    out.println("<td>Implemented</td>");
-                    out.println("<td>"+extractBug.getImplementedBug()+"</td>");
+                    out.println("<td>"+bugInfoUrl+"Implemented'"+args+"Implemented</a></td>");
+                    out.println("<td>"+bugInfoUrl+"Implemented'"+args+extractBug.getImplementedBug()+"</a></td>");
                     out.println("</tr>");
                 }
                 if (extractBug.getTriagedBug()>0)
                 {  
                     out.println("<tr>");
-                    out.println("<td> Triaged </td>");
-                    out.println("<td>  "+extractBug.getTriagedBug()+"  </td>");
+                    out.println("<td>"+bugInfoUrl+"Triaged'"+args+"Triaged</a></td>");
+                    out.println("<td>"+bugInfoUrl+"Triaged'"+args+extractBug.getTriagedBug()+"</a></td>");
                     out.println("</tr>");
                 }
 
                 if (extractBug.getAnalyzedBug()>0)
                 {  
                     out.println("<tr>");
-                    out.println("<td> Analyzed </td>");
-                    out.println("<td>  "+extractBug.getAnalyzedBug()+"  </td>");
+                    out.println("<td>"+bugInfoUrl+"Analyzed'"+args+"Analyzed</a></td>");
+                    out.println("<td>"+bugInfoUrl+"Analyzed'"+args+extractBug.getAnalyzedBug()+"</a></td>");
                     out.println("</tr>");
                 }
 
                 if (extractBug.getNeedMoreInfoQA()>0)
                 {  
                     out.println("<tr>");
-                    out.println("<td> Need More Info - QA </td>");
-                    out.println("<td>  "+extractBug.getNeedMoreInfoQA()+"  </td>");
+                    out.println("<td>"+bugInfoUrl+"Need More Info - QA'"+args+"Need More Info - QA</a></td>");
+                    out.println("<td>"+bugInfoUrl+"Need More Info - QA'"+args+extractBug.getNeedMoreInfoQA()+"</a></td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");

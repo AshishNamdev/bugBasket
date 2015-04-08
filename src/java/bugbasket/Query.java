@@ -19,7 +19,7 @@ import model.BugD;
  */
 public class Query
 {
-    ArrayList<BugD> bugdList = new ArrayList<BugD>();
+    ArrayList<BugD> bugdList ;
     private String actionBy;
 
     public String getActionBy()
@@ -33,7 +33,14 @@ public class Query
     public void setActionBy(String actionBy) {
         this.actionBy = actionBy;
     }
+
+    public Query()
+    {
+        this.bugdList = new ArrayList<BugD>();
+        this.actionBy = null;
+    }
       
+    
     public void fetchBugData()
     {
         String query = "SELECT * FROM `bugbasket`.`bugd` where actionby = "+this.getActionBy();

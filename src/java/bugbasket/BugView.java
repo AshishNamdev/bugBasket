@@ -20,9 +20,24 @@ public class BugView
     {
         this.bugStatus = bugStatus;
     }
-    
-    public void prepareView(ArrayList<BugD> bugdList)
+
+    public String getBugStatus()
     {
-        
+        return bugStatus;
+    }
+    
+    
+    public ArrayList<BugD> prepareView(ArrayList<BugD> bugdList)
+    {
+        ArrayList<BugD> bugFilter = new ArrayList<BugD>();
+        for(BugD bugd : bugdList)
+        {
+            if(bugd.getStatus().equalsIgnoreCase(this.bugStatus))
+            {
+                System.out.println(bugd);
+                bugFilter.add(bugd);
+            }
+        }
+        return bugFilter;
     }
 }
