@@ -16,7 +16,8 @@ function queryBug(user)
     //alert(user)
     //var ele=document.getElementById("stdSearch").value;
     var xmlhttp;
-    var strAjUrlData="http://10.136.131.140/bugBasket/BugBasket?user="+user;
+    var strAjUrlData="http://10.136.4.62/bugBasket/BugBasket?user="+user;
+    //var strAjUrlData="http://10.136.131.140/bugBasket/BugBasket?user="+user;
     //alert(strAjUrlData)
       
     if (window.XMLHttpRequest)

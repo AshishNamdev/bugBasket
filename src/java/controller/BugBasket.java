@@ -51,7 +51,8 @@ public class BugBasket extends HttpServlet {
         
         HttpSession session = request.getSession();
         session.setAttribute("bugdList", bugdList);
-        String bugInfoUrl = "<a href='http://10.136.131.140/bugBasket/BugInfo?status=";
+        String bugInfoUrl = "<a href='http://10.136.4.62/bugBasket/BugInfo?status=";
+        //String bugInfoUrl = "<a href='http://10.136.131.140/bugBasket/BugInfo?status=";
         String args = "title='click to get details' target='_blank'>";
         
             /* TODO output your page here. You may use following sample code. */
@@ -66,12 +67,14 @@ public class BugBasket extends HttpServlet {
             {
                 out.println("<h4> Hi "+bUser+" there are No pending bugs in your basket </h4>");
                 out.println("<br/>");
-                out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
+                out.println("<a href='http://10.136.4.62/bugBasket/index.html'>select another user</a>");
+                //out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
             }
             else
             {
                 out.print("<h4> Hi "+bUser+" there are ");
-                out.print("<a href='http://10.136.131.140/bugBasket/BugDBasket?user="+user+"' title='click to get details' target='_blank'>"+extractBug.getTotalBug()+"</a> bugs in your basket</h4>");
+                out.print("<a href='http://10.136.4.62/bugBasket/BugDBasket?user="+user+"' title='click to get details' target='_blank'>"+extractBug.getTotalBug()+"</a> bugs in your basket</h4>");
+                //out.print("<a href='http://10.136.131.140/bugBasket/BugDBasket?user="+user+"' title='click to get details' target='_blank'>"+extractBug.getTotalBug()+"</a> bugs in your basket</h4>");
                 out.println("<table border = 0.5 cellpadding = 5 cesslspacing = 5>");
                 out.println("<tr>");
                 out.println("<td>status</td>");
@@ -124,7 +127,8 @@ public class BugBasket extends HttpServlet {
                 }
                 out.println("</table>");
                 out.println("<br/>");
-                out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
+                out.println("<a href='http://10.136.4.62/bugBasket/index.html'>select another user</a>");
+                //out.println("<a href='http://10.136.131.140/bugBasket/index.html'>select another user</a>");
                 out.println("</center>");
             }
             out.println("</body>");

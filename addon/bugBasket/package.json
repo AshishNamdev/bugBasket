@@ -9,5 +9,5 @@
   "version": "1.01",
   "permissions": {
   	"cross-domain-content": ["http://10.136.131.140","https://10.136.131.140"]
-  	}
+  	};
 }
